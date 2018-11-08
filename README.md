@@ -2,14 +2,11 @@
 
 ## Learning Goals
 
-- State that functions are ways to wrap up behavior into a bit of
-code (State the Purpose of Functions)
-- State that JavaScript functions are “First Class Data" (What are
-JavaScript Functions)
-- Demonstrate how to assign a function to a variable (Demonstrate
-Assigning Functions to Variables)
-- Demonstrate how to pass behavior into a function (Demonstrate
-Passing Behaviors into Functions)
+- State the purpose of functions
+- What are JavaScript Functions?
+- Demonstrate passing behaviors into functions
+- Demonstrate assigning functions to variables
+
 
 ## Introduction
 
@@ -40,33 +37,34 @@ the given name.
 
 Functions in JavaScript are first-class functions. This means that
 we can pass them as values to other functions, like numbers, strings,
-arrays, and objects. They're super useful.
+arrays, and objects. They're super useful, especially when reducing the
+amount of code being written. 
 
-According to the Mozilla developer glossary:
-> A programming language is said to have First-class functions when
-> functions in that language are treated  like any other variable.
-> For example, in such a language, a function can be passed as an
-> argument to other functions, can be returned by another function
-> and can be assigned as a value to a variable.
+For example, imagine an exercise routine: every morning, we run 5 miles.
+But afterwards — depending on the day — we might lift weights, go for a swim,
+or run an extra 5 miles.
 
-
-## Demonstrate Assigning Functions to Variables
-
-In JavaScript we can assign a function to a variable and we can call that
-function by its variable name.
-
-For ex:
 ```js
-const micCheck = {
-    check: (value) => console.log(value)
-};
+function Monday() {
+  console.log('Go for a five-mile run');
+  console.log('Pump iron');
+}
 
-micCheck.check("Check 1, 2.");
+function Tuesday() {
+  console.log('Go for a five-mile run');
+  console.log('Swim 40 laps');
+}
+...
 ```
 
-Let's build a set of functions that generates output of an exercise routine:
+That's pretty tedious. We now know that functions are supposed to help us reduce
+this kind of repetition. 
 
-(Refactor this code to use variables/ES6)
+## Demonstrate Passing Behaviors into Functions
+
+Let's build a more concise set of functions that generates output of
+an exercise routine:
+
 ```js
 function runFiveMiles() {
   console.log('Go for a five-mile run');
@@ -80,8 +78,6 @@ function swimFortyLaps() {
   console.log('Swim 40 laps');
 }
 ```
-
-## Demonstrate Passing Behaviors into Functions
 
 Every day, our routine includes two activities and the first activity is
 always a run. That means that the second activity can be variable. What
@@ -110,7 +106,30 @@ the parentheses. We're not running the function at this point. It's
 up to `exerciseRoutine()` to call the function when it is needed.
 
 If we call `Monday()`, we'll see that we run five miles, and then we
-lift weights — awesome!
+lift weights--awesome!
+
+
+## Demonstrate Assigning Functions to Variables
+
+In JavaScript we can assign a function to a variable and we can call that
+function by its variable name.
+
+For example:
+```js
+const makeMeASandwich = function(ingredients) {
+       let sandwich = ingredients
+       return ingredients
+   }
+```
+or
+```js
+const monday = function() {
+  exerciseRoutine(liftWeights);
+}
+```
+This technique can be used to further simplify code, pass data around, and/or
+pass data around.
+
 
 ## Conclusion
 
