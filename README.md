@@ -3,18 +3,17 @@
 ## Learning Goals
 
 - State the purpose of functions
-- What are JavaScript Functions?
+- Identify what JavaScript functions are
 - Demonstrate passing behaviors into functions
 - Demonstrate assigning functions to variables
 
-
 ## Introduction
 
-Sometimes in life, we need to take a series of steps to complete a task. 
-Since life isn't scripted as scripted as a TV show for example, anything
-can happen that alters each step. We need to be able to adjust accordingly.
+Sometimes in life, we need to take a series of steps to complete a task. Since
+life isn't scripted like a TV show or movie, anything can happen that alters
+each step. We need to be able to adjust accordingly.
 
-## State the Purpose of Functions
+### State the Purpose of Functions
 
 Functions are ways to wrap up behavior into a bit of code. Functions are one
 of the key pieces of any programming language. Functions can often apply to 
@@ -28,7 +27,7 @@ desired outcome, for example, making recipes from a cookbook.
    }
 ```
 
-## What are JavaScript Functions
+### Identify What JavaScript Functions Are
 
 A function is a group of code that can be called upon, sometimes
 by a name. In other words, a function is a way to group together
@@ -40,9 +39,9 @@ we can pass them as values to other functions, like numbers, strings,
 arrays, and objects. They're super useful, especially when reducing the
 amount of code being written. 
 
-For example, imagine an exercise routine: every morning, we run 5 miles.
-But afterwards — depending on the day — we might lift weights, go for a swim,
-or run an extra 5 miles.
+For example, imagine an exercise routine: every morning, we run five miles. But
+afterwards — depending on the day — we might lift weights, go for a swim, or run
+an extra fuve miles.
 
 ```js
 function Monday() {
@@ -60,7 +59,7 @@ function Tuesday() {
 That's pretty tedious. We now know that functions are supposed to help us reduce
 this kind of repetition. 
 
-## Demonstrate Passing Behaviors into Functions
+### Demonstrate Passing Behaviors into Functions
 
 Let's build a more concise set of functions that generates output of
 an exercise routine:
@@ -90,8 +89,8 @@ function exerciseRoutine(postRunActivity) {
 }
 ```
 
-Notice that, in `exerciseRoutine()`, the postRunActivity parameter is
-actually a function — we call it after we call runFiveMiles(). Now
+Notice that, in `exerciseRoutine()`, the `postRunActivity` parameter is
+actually a function — we call it after we call `runFiveMiles()`. Now
 let's try to use this new function we created in a `Monday()` function:
 
 ```js
@@ -106,10 +105,9 @@ the parentheses. We're not running the function at this point. It's
 up to `exerciseRoutine()` to call the function when it is needed.
 
 If we call `Monday()`, we'll see that we run five miles, and then we
-lift weights--awesome!
+lift weights — awesome!
 
-
-## Demonstrate Assigning Functions to Variables
+### Demonstrate Assigning Functions to Variables
 
 In JavaScript we can assign a function to a variable and we can call that
 function by its variable name.
@@ -130,13 +128,12 @@ const monday = function() {
 This technique can be used to further simplify code, pass data around, and/or
 pass data around.
 
-
 ## Conclusion
 
-Functions are the cornerstones of any functional programming language.
-Functions can be assigned as constants, variables, placed as array elements
-and even set as values of keys on an object. Most importantly  functions can
-be returned to and from functions--just like any other data type!
+Functions are the cornerstones of any functional programming language. Functions
+can be assigned as constants, variables, placed as array elements and even set
+as values of keys on an object. Most importantly, functions can be returned to
+and from functions — just like any other data type!
 
 ## Resources
 
