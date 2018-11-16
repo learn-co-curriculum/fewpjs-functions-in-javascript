@@ -13,7 +13,7 @@ Sometimes in life, we need to take a series of steps to complete a task. Since
 life isn't scripted like a TV show or movie, anything can happen that alters
 each step. We need to be able to adjust accordingly.
 
-### State the Purpose of Functions
+## State the Purpose of Functions
 
 Functions are ways to wrap up behavior into a bit of code. Functions are one
 of the key pieces of any programming language. Functions can often apply to 
@@ -27,7 +27,7 @@ desired outcome, for example, making recipes from a cookbook.
    }
 ```
 
-### Identify What JavaScript Functions Are
+## Identify What JavaScript Functions Are
 
 A function is a group of code that can be called upon, sometimes
 by a name. In other words, a function is a way to group together
@@ -53,16 +53,31 @@ function Tuesday() {
   console.log('Go for a five-mile run');
   console.log('Swim 40 laps');
 }
-...
+
+function Wednesday() {
+  console.log('Go for a five-mile run');
+  console.log('Go for a five-mile run');
+}
+
+function Thursday() {
+  console.log('Go for a five-mile run');
+  console.log('Pump iron');
+}
+
+function Friday() {
+  console.log('Go for a five-mile run');
+  console.log('Swim 40 laps');
+}
 ```
 
 That's pretty tedious. We now know that functions are supposed to help us reduce
 this kind of repetition. 
 
-### Demonstrate Passing Behaviors into Functions
+## Demonstrate Passing Behaviors into Functions
 
-Let's build a more concise set of functions that generates output of
-an exercise routine:
+What if we pull all of our five-mile runs into their own function? Let's build a
+more concise set of functions that generates output of an exercise routine, and
+let's do the same thing for lifting weights and swimming:
 
 ```js
 function runFiveMiles() {
@@ -78,9 +93,19 @@ function swimFortyLaps() {
 }
 ```
 
-Every day, our routine includes two activities and the first activity is
-always a run. That means that the second activity can be variable. What
-if we created a function that took the second activity as a parameter?
+Great! Now that we've cut down a little bit more: `Monday()` could now look like
+
+```js
+function Monday() {
+  runFiveMiles();
+  liftWeights();
+}
+```
+
+While it is a tiny bit shorter than before, there is definitely still room for
+improvement. Every day, our routine includes two activities and the first activity
+is always a run. That means that the second activity can be variable. What if we
+created a function that took the second activity as a parameter?
 
 ```js
 function exerciseRoutine(postRunActivity) {
@@ -107,7 +132,94 @@ up to `exerciseRoutine()` to call the function when it is needed.
 If we call `Monday()`, we'll see that we run five miles, and then we
 lift weights — awesome!
 
-### Demonstrate Assigning Functions to Variables
+
+Note: you'll often see functions used in this way referred to as "callbacks."
+That's because they're _called back_ after the body of the function they're
+passed to completes! Callbacks are mostly used for asynchronous operations, like 
+requesting a JSON file from a server, or in the case of Node.js, accessing the
+file system, a database, etc.
+
+### Inline functions
+
+What if, though, we want to have a one-off day of Pilates in our exercise routine?
+Keep in mind that our `exerciseRoutine()` function requires a function as its
+first (and only) parameter. However, that function doesn't have to be defined
+beforehand! We can pass what's called an _anonymous function_ to `exerciseRoutine()`.
+
+To start with, let's use the full function syntax we've come to know and love:
+
+```js
+exerciseRoutine(function() {
+  console.log('Stretch! Work that core!');
+});
+
+// "Go for a five-mile run"
+// "Stretch! Work that core!"
+```
+
+We can rewrite this to be more concise by using an arrow function:
+
+```js
+exerciseRoutine(() => {
+  console.log('Stretch! Work that core!');
+});
+
+// Or even shorter:
+exerciseRoutine(() => console.log('Stretch! Work that core!'));
+```
+
+Notice how neither of these functions have a name — we can't refer to it elsewhere,
+we just pass it in as an argument to `exerciseRoutine()`. Functions that don't have
+names are, for obvious reasons, known as **anonymous functions**.
+
+### Returning functions
+
+Functions can also return other functions. This is useful when we want to package up
+a function and its environment, but when we don't want to call it _just yet_.
+
+For example, let's say our morning routine involves drinking a cup of coffee,
+exercising immediately, and then at some point later (depending on how we feel),
+eating breakfast. What we'll have for breakfast depends on what kind of exercise
+we're doing.
+
+Let's translate this to a function:
+
+```js
+function morningRoutine(exercise) {
+  var breakfast = null;
+
+  if (exercise === liftWeights) {
+    breakfast = 'protein bar';
+  } else if (exercise === swimFortyLaps) {
+    breakfast = 'kale smoothie';
+  } else {
+    breakfast = 'granola';
+  }
+
+  exerciseRoutine(exercise);
+
+  // we could give this function a name if we wanted to,
+  // but since it's only available _inside_ morningRoutine(),
+  // we don't need to
+  return function() {
+    console.log(`Nom nom nom, this ${breakfast} is delicious!`);
+  }
+}
+```
+
+Now when we call `morningRoutine()`, we'll get a function back:
+
+```js
+var afterExercise = morningRoutine(liftWeights);
+```
+
+And we can call that function later:
+
+```js
+afterExercise();
+```
+
+## Demonstrate Assigning Functions to Variables
 
 In JavaScript we can assign a function to a variable and we can call that
 function by its variable name.
@@ -133,7 +245,10 @@ pass data around.
 Functions are the cornerstones of any functional programming language. Functions
 can be assigned as constants, variables, placed as array elements and even set
 as values of keys on an object. Most importantly, functions can be returned to
-and from functions — just like any other data type!
+and from functions — just like any other data type! If you haven't been following
+along, it's vitally important that you go back and do so. First-class functions are
+one of JavaScript's most powerful features, but it takes some practice for them
+to sink in.
 
 ## Resources
 
