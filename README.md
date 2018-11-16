@@ -34,10 +34,10 @@ by a name. In other words, a function is a way to group together
 some code, give this group a name, and later invoke the code using
 the given name.
 
-Functions in JavaScript are first-class functions. This means that
-we can pass them as values to other functions, like numbers, strings,
-arrays, and objects. They're super useful, especially when reducing the
-amount of code being written. 
+Functions in JavaScript are first-class data. This means that they are
+treated like any other variable and we can pass them as values to other
+functions, like numbers, strings, arrays, and objects. They're super useful,
+especially when reducing the amount of code being written. 
 
 For example, imagine an exercise routine: every morning, we run five miles. But
 afterwards — depending on the day — we might lift weights, go for a swim, or run
