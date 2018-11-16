@@ -133,7 +133,7 @@ If we call `Monday()`, we'll see that we run five miles, and then we
 lift weights — awesome!
 
 
-Note: you'll often see functions used in this way referred to as "callbacks."
+**Note:** you'll often see functions used in this way referred to as "callbacks."
 That's because they're _called back_ after the body of the function they're
 passed to completes! Callbacks are mostly used for asynchronous operations, like 
 requesting a JSON file from a server, or in the case of Node.js, accessing the
