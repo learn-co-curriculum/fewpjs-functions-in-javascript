@@ -1,13 +1,6 @@
 # Functions
 
-## Problem Statement
-
-Functions are the single most important unit of code in JavaScript. Much like a
-`<div>` or a `<section>` in HTML, functions serve as ways to group together
-related bits of JavaScript code.  Grouped code is easier to read, debug, and
-improve.
-
-## Objectives
+## Learning Goals
 
 1. Define abstraction
 2. Explain that functions are abstractions
@@ -15,6 +8,14 @@ improve.
 4. Define "Generalization"
 5. Demonstrate "Generalization" by using _parameters_ and _arguments_
 6. Demonstrate _return values_
+
+
+## Introduction
+
+Functions are the single most important unit of code in JavaScript. Much like a
+`<div>` or a `<section>` in HTML, functions serve as ways to group together
+related bits of JavaScript code.  Grouped code is easier to read, debug, and
+improve.
 
 ## Define Abstraction
 
@@ -78,7 +79,7 @@ function exerciseByronThePoodle() {
 }
 ```
 
-This code is a _function declaration_.
+This code above is a _function declaration_.
 
 Here we have _abstracted_ 6 activities into 1 activity:
 `exerciseByronThePoodle`.
@@ -89,7 +90,7 @@ Here we have _abstracted_ 6 activities into 1 activity:
 
 ## Explain How To _Call_ a Function
 
-To execute a function you add `()` after its name. To execute the function we
+To "execute" or "call" a function you add `()` after its name. To execute the function we
 just defined in JavaScript, you run: `exerciseByronThePoodle()`. When we ran
 `document.querySelector()`, we were _calling_ a function. `Math.floor()` is
 another function. That `()` is also known as the _invocation operator_ because
