@@ -1,143 +1,280 @@
-# Creating Functions in JavaScript
+# Functions
 
-## Learning Goals
+## Problem Statement
 
-- State the purpose of functions
-- Identify what JavaScript functions are
-- Demonstrate passing behaviors into functions
-- Demonstrate assigning functions to variables
+Functions are the single most important unit of code in JavaScript. Much like a
+`<div>` or a `<section>` in HTML, functions serve as ways to group together
+related bits of JavaScript code.  Grouped code is easier to read, debug, and
+improve.
 
-## Introduction
+## Objectives
 
-Sometimes in life, we need to take a series of steps to complete a task. Since
-life isn't scripted like a TV show or movie, anything can happen that alters
-each step. We need to be able to adjust accordingly.
+1. Define abstraction
+2. Explain that functions are abstractions
+3. Explain how to _call_ a function
+4. Define "Generalization"
+5. Demonstrate "Generalization" by using _parameters_ and _arguments_
+6. Demonstrate _return values_
 
-### State the Purpose of Functions
+## Define Abstraction
 
-Functions are ways to wrap up behavior into a bit of code. Functions are one
-of the key pieces of any programming language. Functions can often apply to 
-everyday things. Think of functions like a list of actions to take to get a
-desired outcome, for example, making recipes from a cookbook.
+Abstraction comes from Latin roots which mean "to pull away." It's the
+"take-away" or "impression" of a whole thing.  As humans, we often take sets of
+single actions or things and _abstract them_ into another word.
 
-```js
-   function makeMeASandwich(ingredients) {
-       let sandwich = ingredients
-       return ingredients
-   }
+That word that we "pull away" is the "abstraction." Literally it means "the
+pulled away thing." You might not think about it often, but your brain is full
+of abstractions.
+
+| Single Units | Abstraction |
+|-------------|--------------|
+|John, Paul, George, Ringo | The Beatles |
+|Get two pieces of bread, put jam on ... | Make a peanut butter and jelly sandwich |
+|Hermione, Harry, Ron | Troublesome Gryffindors |
+| visit site, make userid, make password... | Sign up for Flatbook|
+| get in the lift, hit "G" button, exit elevator, walk to subway... | Go home|
+
+We create abstractions to make it easier to shorten our sentences. We'd never
+get anything done if we couldn't abstract! We also use abstractions to decide
+what doesn't fit or what should fit. "Mozart" doesn't belong with The Beatles,
+but he does fit with "Baroque Masters."
+
+Abstractions help us think about complex activities. Humans brought the pattern of
+"abstracting work" to JavaScript. Abstractions that hold work are called
+_functions_.
+
+## Explain That Functions Are Abstractions
+
+Functions combine series of steps under a new name. That's why they're
+_abstractions_. We'll call that the _function name_. More formally:
+
+**A function is an object that contains a sequence JavaScript
+statements.  We can execute or _call_ it multiple times.**
+
+To _call_ a function means to run the independent pieces that make it.
+Synonyms to _call_ that you might see are _execute_ and _invoke_.
+
+Let's describe a series of single, non-abstract, tasks:
+
+```javascript
+console.log("Wake Byron the poodle");
+console.log("Leash Byron the poodle");
+console.log("Walk to the park Byron the poodle");
+console.log("Throw the fribsee for Byron the poodle");
+console.log("Walk home with Byron the poodle");
+console.log("Unleash Byron the poodle");
 ```
 
-### Identify What JavaScript Functions Are
+To abstract these single actions into a collective name, we do:
 
-A function is a group of code that can be called upon, sometimes
-by a name. In other words, a function is a way to group together
-some code, give this group a name, and later invoke the code using
-the given name.
-
-Functions in JavaScript are first-class data. This means that they are
-treated like any other variable and we can pass them as values to other
-functions, like numbers, strings, arrays, and objects. They're super useful,
-especially when reducing the amount of code being written. 
-
-For example, imagine an exercise routine: every morning, we run five miles. But
-afterwards — depending on the day — we might lift weights, go for a swim, or run
-an extra fuve miles.
-
-```js
-function Monday() {
-  console.log('Go for a five-mile run');
-  console.log('Pump iron');
+```javascript
+function exerciseByronThePoodle() {
+  console.log("Wake Byron the poodle");
+  console.log("Leash Byron the poodle");
+  console.log("Walk to the park Byron the poodle");
+  console.log("Throw the fribsee for Byron the poodle");
+  console.log("Walk home with Byron the poodle");
+  console.log("Unleash Byron the poodle");
 }
+```
 
-function Tuesday() {
-  console.log('Go for a five-mile run');
-  console.log('Swim 40 laps');
+This code is a _function declaration_.
+
+Here we have _abstracted_ 6 activities into 1 activity:
+`exerciseByronThePoodle`.
+
+> **ASIDE**: Abstractions themselves can be lumped together _as if_ they were
+> single things.  The abstraction `dailyDogCareForByron` probably includes
+> `feedByronThePoodle`, `giveWaterToByronThePoodle` etc.
+
+## Explain How To _Call_ a Function
+
+To execute a function you add `()` after its name. To execute the function we
+just defined in JavaScript, you run: `exerciseByronThePoodle()`. When we ran
+`document.querySelector()`, we were _calling_ a function. `Math.floor()` is
+another function. That `()` is also known as the _invocation operator_ because
+it tells JavaScript to...invoke the function.
+
+> **LEARNING TIP**: Try defining a small function in the JavaScript console to
+> test this out. You can copy the syntax provided above.
+
+A _function_ must be _declared_ before it can be called. Calling
+`exerciseByronThePoodle()` before the function has been declared causes an
+error for JavaScript.
+
+## Define "Generalization"
+
+Looking at our abstraction, `exerciseByronThePoodle()`, it's pretty concrete, the
+opposite of abstract. It's concrete because it only works for Byron the Poodle.
+Our function would be more _abstract_ if it were written for _all dogs_ and it
+just-so-happened that Byron the Poodle was one of the eligible things to
+undergo the function's processes. The process of moving from _concrete_ to
+_abstract_ is called "generalization" (or "abstraction," by some).
+
+## Demonstrate "Generalization" By Using _Parameters_ And _Arguments_
+
+Let's make `exerciseByronThePoodle()` more general. Looking at the
+`console.log()` statements, we repeatedly refer to a dog's name and a dog's
+breed. Both of these are `Strings`. If we were to write them as JavaScript
+variables inside the function we might write `dogName` and `dogBreed`.
+
+Let's use `String` interpolation to generalize the _body_ of our function
+
+```javascript
+function exerciseByronThePoodle() {
+  let dogName = "Byron";
+  let dogBreed = "poodle";
+  console.log(`Wake ${dogName} the ${dogBreed}`);
+  console.log(`Leash ${dogName} the ${dogBreed}`);
+  console.log(`Walk to the park ${dogName} the ${dogBreed}`);
+  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Walk home with ${dogName} the ${dogBreed}`);
+  console.log(`Unleash ${dogName} the ${dogBreed}`);
 }
+```
+
+If we _call_ this function, we'll get the exact _same_ result as the original
+`exerciseByronThePoodle()`.
+
+But there are some advances here. We define the `dogName` and `dogBreed` in
+only one place. That means we can change things a bit easier now by changing
+these variables instead of using find-and-replace (`2 * 6 = 12`) twelve times.
+
+Our problem now is that our function has the `dogName` and `dogBreed` locked
+in. If we could make it possible to tell each _call_ of the function "Hey use
+these `String`s instead" we could get more _general_.
+
+That's the purpose of _parameters_. _Parameters_ are locally-scoped variables
+that are usable ("scoped") to inside the function. In our example, our variables
+`dogName` and `dogBreed` should become _parameters_.  They're defined inside of
+the _function declaration's_ `()`.
+
+```javascript
+function exerciseDog(dogName, dogBreed) {
+...
 ...
 ```
 
-That's pretty tedious. We now know that functions are supposed to help us reduce
-this kind of repetition. 
+JavaScript will assign the _arguments_ of "Byron" and "poodle" to the
+_parameters_ `dogName` and `dogBreed` when this function is called like so:
 
-### Demonstrate Passing Behaviors into Functions
+```javascript
+function exerciseDog("Byron", "poodle");
+```
 
-Let's build a more concise set of functions that generates output of
-an exercise routine:
+The full _function declaration_ for `exerciseDog` is:
 
-```js
-function runFiveMiles() {
-  console.log('Go for a five-mile run');
-}
-
-function liftWeights() {
-  console.log('Pump iron');
-}
-
-function swimFortyLaps() {
-  console.log('Swim 40 laps');
+```javascript
+function exerciseDog(dogName, dogBreed) {
+  console.log(`Wake ${dogName} the ${dogBreed}`);
+  console.log(`Leash ${dogName} the ${dogBreed}`);
+  console.log(`Walk to the park ${dogName} the ${dogBreed}`);
+  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Walk home with ${dogName} the ${dogBreed}`);
+  console.log(`Unleash ${dogName} the ${dogBreed}`);
 }
 ```
 
-Every day, our routine includes two activities and the first activity is
-always a run. That means that the second activity can be variable. What
-if we created a function that took the second activity as a parameter?
+When the function is _called_, it assigns `dogName = "Byron"` and `dogBreed =
+"poodle"`. The parameters are usable inside the function body _as if_ they had
+been set with `let` inside the function.
 
-```js
-function exerciseRoutine(postRunActivity) {
-  runFiveMiles();
-  postRunActivity();
+Because our function is now more _general_, we can:
+
+```javascript
+exerciseDog("Boo", "puggle");
+exerciseDog("Jojo", "mutt");
+exerciseDog("Emmeline", "bernedoodle");
+```
+
+If expected arguments aren't given, the parameters won't be set. The
+parameters' values will be `undefined`.  This is just like non-initialized
+variables; set them else they're `undefined`.  **This will not cause an error
+in JavaScript**. This can lead to humorous bugs like:
+
+```text
+"Wake undefined the undefined"  // From: console.log("Wake ${dogName} the ${dogBreed}");
+```
+
+We can assign default arguments to our parameters. While it's not as attention-
+grabbing as a real error, it's a helpful signal that we've run off the rails.
+
+```javascript
+function exerciseDog(dogName="ERROR the Broken Dog", dogBreed="Sick Puppy") {
+...
+```
+
+In summary, we went from:
+
+* a list of operations
+* to a wrapped abstraction called a function
+* to a more general version of the function
+
+## Demonstrate _Return Values_
+
+Sometimes it's helpful to send something _back_ to the place where the function
+was _called_. It's like a "summary" of what happened in the function. In real
+life, we expect the function "bake a cake" to return a "cake". Or we expect
+"Visit the ATM" to return paper money. Functions in JavaScript can also return
+things.  Consider:
+
+```javascript
+
+let weatherToday = "Rainy";
+
+function exerciseDog(dogName, dogBreed) {
+  if (weatherToday === "Rainy") {
+    return `${dogName} did not exercise due to rain`;
+  }
+  console.log(`Wake ${dogName} the ${dogBreed}`);
+  console.log(`Leash ${dogName} the ${dogBreed}`);
+  console.log(`Walk to the park ${dogName} the ${dogBreed}`);
+  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Walk home with ${dogName} the ${dogBreed}`);
+  console.log(`Unleash ${dogName} the ${dogBreed}`);
+  return `${dogName} is happy and tired!`
 }
+
+let result = exerciseDog("Byron", "poodle");
+console.log(result); // => "Byron did not exercise due to rain"
 ```
 
-Notice that, in `exerciseRoutine()`, the `postRunActivity` parameter is
-actually a function — we call it after we call `runFiveMiles()`. Now
-let's try to use this new function we created in a `Monday()` function:
+In JavaScript, when a function is _called_, when it encounters a `return`
+statement it "returns" the value of the thing that appears to the right of the word. The thing
+could be a `String`, a `Number` or an _expression_ like `1 + 1` (which returns,
+`2`, sensibly enough).
 
-```js
-function Monday() {
-  exerciseRoutine(liftWeights);
-}
-```
+When a `return` is reached in the code, no further code behavior happens.
+Above, if `weatherToday` is `truthy` **the only thing that happens** is the
+evaluation of the `String`.
 
-Notice that we aren't calling `liftWeights`. When we want to pass a
-function as a value, we pass it by reference. We do this by omitting
-the parentheses. We're not running the function at this point. It's
-up to `exerciseRoutine()` to call the function when it is needed.
-
-If we call `Monday()`, we'll see that we run five miles, and then we
-lift weights — awesome!
-
-### Demonstrate Assigning Functions to Variables
-
-In JavaScript we can assign a function to a variable and we can call that
-function by its variable name.
-
-For example:
-```js
-const makeMeASandwich = function(ingredients) {
-       let sandwich = ingredients
-       return ingredients
-   }
-```
-or
-```js
-const monday = function() {
-  exerciseRoutine(liftWeights);
-}
-```
-This technique can be used to further simplify code, pass data around, and/or
-pass data around.
+Return values can be saved to variables. Or they can be used as inputs to other
+functions.
 
 ## Conclusion
 
-Functions are the cornerstones of any functional programming language. Functions
-can be assigned as constants, variables, placed as array elements and even set
-as values of keys on an object. Most importantly, functions can be returned to
-and from functions — just like any other data type!
+In this lesson we learned about the  idea of abstraction, both in real life and
+in code. Abstractions reduce complexity by allowing us to think in groups of
+activities or things instead of being fully zoomed-in all the time. JavaScript
+functions are defined:
+
+```javascript
+
+function functionName(argument1, argument2, argument3) {
+  body code goes here
+}
+```
+
+Functions are "called" by entering the function's name followed by the
+_invocation operator_, `()`. "Invoke" or "execute" mean the same thing.
+Arguments that the function declaration expects should be passed inside of the
+invocation operator.  Functions can, but are not obligated to, return _return
+values_ at the end of their execution. Return values are often results of a
+process, grand totals, or success / failure data.
 
 ## Resources
 
-- [Wikipedia](https://en.wikipedia.org/wiki/First-class_function): [First-class function](https://en.wikipedia.org/wiki/First-class_function)
-- [JavaScript is Sexy](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/#more-1037): [Higher-order functions](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/#more-1037)
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/javascript-first-class-functions'>First Class Functions</a> on Learn.co and start learning to code for free.</p>
+- MDN
+  + [Functions — reusable blocks of code](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
+  + [Function return values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
+  + [Function declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
