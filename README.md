@@ -49,7 +49,7 @@ _functions_.
 Functions combine series of steps under a new name. That's why they're
 _abstractions_. We'll call that the _function name_. More formally:
 
-**A function is an object that contains a sequence JavaScript
+**A function is an object that contains a sequence in JavaScript
 statements.  We can execute or _call_ it multiple times.**
 
 To _call_ a function means to run the independent pieces that make it.
