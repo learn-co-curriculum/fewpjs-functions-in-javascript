@@ -9,7 +9,6 @@
 5. Demonstrate "Generalization" by using _parameters_ and _arguments_
 6. Demonstrate _return values_
 
-
 ## Introduction
 
 Functions are the single most important unit of code in JavaScript. Much like a
@@ -27,18 +26,38 @@ That word that we "pull away" is the "abstraction." Literally it means "the
 pulled away thing." You might not think about it often, but your brain is full
 of abstractions.
 
-| Single Units | Abstraction |
-|-------------|--------------|
-|John, Paul, George, Ringo | The Beatles |
-|Get two pieces of bread, put jam on ... | Make a peanut butter and jelly sandwich |
-|Hermione, Harry, Ron | Troublesome Gryffindors |
-| visit site, make userid, make password... | Sign up for Flatbook|
-| get in the lift, hit "G" button, exit elevator, walk to subway... | Go home|
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>Single Units</th>
+    <th>Abstraction</th>
+  </tr>
+  
+  <tr>
+    <td>John, Paul, George, Ringo</td>
+    <td>The Beatles</td>
+  </tr>
+  <tr>
+    <td>Get two pieces of bread, put jam on ...</td>
+    <td>Make a peanut butter and jelly sandwich</td>
+  </tr>
+  <tr>
+    <td>Hermione, Harry, Ron</td>
+    <td>Troublesome Gryffindors</td>
+  </tr>
+  <tr>
+    <td>visit site, make userid, make password...</td>
+    <td>Sign up for Flatbook</td>
+  </tr>
+  <tr>
+    <td>get in the lift, hit "G" button, exit elevator, walk to subway...</td>
+    <td>Go home</td>
+  </tr>
+</table>
 
 We create abstractions to make it easier to shorten our sentences. We'd never
 get anything done if we couldn't abstract! We also use abstractions to decide
 what doesn't fit or what should fit. "Mozart" doesn't belong with The Beatles,
-but he does fit with "Baroque Masters."
+but he does fit with "Classical Masters."
 
 Abstractions help us think about complex activities. Humans brought the pattern of
 "abstracting work" to JavaScript. Abstractions that hold work are called
@@ -46,10 +65,10 @@ _functions_.
 
 ## Explain That Functions Are Abstractions
 
-Functions combine series of steps under a new name. That's why they're
+Functions combine a series of steps under a new name. That's why they're
 _abstractions_. We'll call that the _function name_. More formally:
 
-**A function is an object that contains a sequence JavaScript
+**A function is an object that contains a sequence of JavaScript
 statements.  We can execute or _call_ it multiple times.**
 
 To _call_ a function means to run the independent pieces that make it.
@@ -61,7 +80,7 @@ Let's describe a series of single, non-abstract, tasks:
 console.log("Wake Byron the poodle");
 console.log("Leash Byron the poodle");
 console.log("Walk to the park Byron the poodle");
-console.log("Throw the fribsee for Byron the poodle");
+console.log("Throw the frisbee for Byron the poodle");
 console.log("Walk home with Byron the poodle");
 console.log("Unleash Byron the poodle");
 ```
@@ -73,7 +92,7 @@ function exerciseByronThePoodle() {
   console.log("Wake Byron the poodle");
   console.log("Leash Byron the poodle");
   console.log("Walk to the park Byron the poodle");
-  console.log("Throw the fribsee for Byron the poodle");
+  console.log("Throw the frisbee for Byron the poodle");
   console.log("Walk home with Byron the poodle");
   console.log("Unleash Byron the poodle");
 }
@@ -123,12 +142,12 @@ Let's use `String` interpolation to generalize the _body_ of our function
 
 ```javascript
 function exerciseByronThePoodle() {
-  let dogName = "Byron";
-  let dogBreed = "poodle";
+  const dogName = "Byron";
+  const dogBreed = "poodle";
   console.log(`Wake ${dogName} the ${dogBreed}`);
   console.log(`Leash ${dogName} the ${dogBreed}`);
   console.log(`Walk to the park ${dogName} the ${dogBreed}`);
-  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Throw the frisbee for ${dogName} the ${dogBreed}`);
   console.log(`Walk home with ${dogName} the ${dogBreed}`);
   console.log(`Unleash ${dogName} the ${dogBreed}`);
 }
@@ -160,7 +179,7 @@ JavaScript will assign the _arguments_ of "Byron" and "poodle" to the
 _parameters_ `dogName` and `dogBreed` when this function is called like so:
 
 ```javascript
-function exerciseDog("Byron", "poodle");
+exerciseDog("Byron", "poodle");
 ```
 
 The full _function declaration_ for `exerciseDog` is:
@@ -170,7 +189,7 @@ function exerciseDog(dogName, dogBreed) {
   console.log(`Wake ${dogName} the ${dogBreed}`);
   console.log(`Leash ${dogName} the ${dogBreed}`);
   console.log(`Walk to the park ${dogName} the ${dogBreed}`);
-  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Throw the frisbee for ${dogName} the ${dogBreed}`);
   console.log(`Walk home with ${dogName} the ${dogBreed}`);
   console.log(`Unleash ${dogName} the ${dogBreed}`);
 }
@@ -178,7 +197,7 @@ function exerciseDog(dogName, dogBreed) {
 
 When the function is _called_, it assigns `dogName = "Byron"` and `dogBreed =
 "poodle"`. The parameters are usable inside the function body _as if_ they had
-been set with `let` inside the function.
+been set with `const` inside the function.
 
 Because our function is now more _general_, we can:
 
@@ -197,8 +216,9 @@ in JavaScript**. This can lead to humorous bugs like:
 "Wake undefined the undefined"  // From: console.log("Wake ${dogName} the ${dogBreed}");
 ```
 
-We can assign default arguments to our parameters. While it's not as attention-
-grabbing as a real error, it's a helpful signal that we've run off the rails.
+We can assign default arguments to our parameters. While it's not as
+attention-grabbing as a real error, it's a helpful signal that we've run off the
+rails.
 
 ```javascript
 function exerciseDog(dogName="ERROR the Broken Dog", dogBreed="Sick Puppy") {
@@ -221,7 +241,7 @@ things.  Consider:
 
 ```javascript
 
-let weatherToday = "Rainy";
+const weatherToday = "Rainy";
 
 function exerciseDog(dogName, dogBreed) {
   if (weatherToday === "Rainy") {
@@ -230,13 +250,13 @@ function exerciseDog(dogName, dogBreed) {
   console.log(`Wake ${dogName} the ${dogBreed}`);
   console.log(`Leash ${dogName} the ${dogBreed}`);
   console.log(`Walk to the park ${dogName} the ${dogBreed}`);
-  console.log(`Throw the fribsee for ${dogName} the ${dogBreed}`);
+  console.log(`Throw the frisbee for ${dogName} the ${dogBreed}`);
   console.log(`Walk home with ${dogName} the ${dogBreed}`);
   console.log(`Unleash ${dogName} the ${dogBreed}`);
   return `${dogName} is happy and tired!`
 }
 
-let result = exerciseDog("Byron", "poodle");
+const result = exerciseDog("Byron", "poodle");
 console.log(result); // => "Byron did not exercise due to rain"
 ```
 
