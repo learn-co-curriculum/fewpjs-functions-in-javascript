@@ -2,12 +2,12 @@
 
 ## Learning Goals
 
-1. Define abstraction
-2. Explain that functions are abstractions
-3. Explain how to _call_ a function
-4. Define "Generalization"
-5. Demonstrate "Generalization" by using _parameters_ and _arguments_
-6. Demonstrate _return values_
+- Define abstraction
+- Explain that functions are abstractions
+- Explain how to _call_ a function
+- Define "Generalization"
+- Demonstrate "Generalization" by using _parameters_ and _arguments_
+- Demonstrate _return values_
 
 ## Introduction
 
