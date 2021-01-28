@@ -266,7 +266,7 @@ could be a `String`, a `Number` or an _expression_ like `1 + 1` (which returns,
 `2`, sensibly enough).
 
 When a `return` is reached in the code, no further code behavior happens.
-Above, if `weatherToday === "Rainy"` is `truthy` **the only thing that happens** 
+Above, if `weatherToday === "Rainy"` returns `true`, **the only thing that happens** 
 is the evaluation of the `String`.
 
 Return values can be saved to variables. Or they can be used as inputs to other
