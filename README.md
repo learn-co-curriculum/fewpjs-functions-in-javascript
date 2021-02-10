@@ -105,12 +105,13 @@ Here we have _abstracted_ 6 activities into 1 activity:
 
 > **ASIDE**: Abstractions themselves can be lumped together _as if_ they were
 > single things.  The abstraction `dailyDogCareForByron` probably includes
-> `feedByronThePoodle`, `giveWaterToByronThePoodle` etc.
+> `feedByronThePoodle`, `giveWaterToByronThePoodle`, `exerciseByronThePoodle`,
+etc.
 
 ## Explain How To _Call_ a Function
 
-To "execute" or "call" a function you add `()` after its name. To execute the function we
-just defined in JavaScript, you run: `exerciseByronThePoodle()`. When we ran
+To "execute" or "call" a function in JavaScript you add `()` after its name. To
+execute the function we just defined, you run: `exerciseByronThePoodle()`. When we ran
 `document.querySelector()`, we were _calling_ a function. `Math.floor()` is
 another function. That `()` is also known as the _invocation operator_ because
 it tells JavaScript to...invoke the function.
@@ -209,8 +210,8 @@ exerciseDog("Emmeline", "bernedoodle");
 
 If expected arguments aren't given, the parameters won't be set. The
 parameters' values will be `undefined`.  This is just like non-initialized
-variables; set them else they're `undefined`.  **This will not cause an error
-in JavaScript**. This can lead to humorous bugs like:
+variables; if you don't assign a value they're `undefined`.  **This will 
+not cause an error in JavaScript**. This can lead to humorous bugs like:
 
 ```text
 "Wake undefined the undefined"  // From: console.log("Wake ${dogName} the ${dogBreed}");
@@ -260,14 +261,13 @@ const result = exerciseDog("Byron", "poodle");
 console.log(result); // => "Byron did not exercise due to rain"
 ```
 
-In JavaScript, when a function is _called_, when it encounters a `return`
-statement it "returns" the value of the thing that appears to the right of the word. The thing
-could be a `String`, a `Number` or an _expression_ like `1 + 1` (which returns,
-`2`, sensibly enough).
+When the JavaScript engine encounters a `return`statement it "returns" the value
+of the thing that appears to the right of the word. The thing could be a `String`,
+a `Number` or an _expression_ like `1 + 1` (which returns, `2`, sensibly enough).
 
-When a `return` is reached in the code, no further code behavior happens.
-Above, if `weatherToday === "Rainy"` returns `true`, **the only thing that happens** 
-is the evaluation of the `String`.
+When a `return` is reached in the code, no further code behavior happens. Above, 
+if `weatherToday === "Rainy"` returns `true`, **the only thing that happens** is 
+the evaluation and return of the `String` `${dogName} did not exercise due to rain`.
 
 Return values can be saved to variables. Or they can be used as inputs to other
 functions.
@@ -281,7 +281,7 @@ functions are defined:
 
 ```javascript
 
-function functionName(argument1, argument2, argument3) {
+function functionName(parameter1, parameter2, parameter3) {
   body code goes here
 }
 ```
@@ -289,7 +289,7 @@ function functionName(argument1, argument2, argument3) {
 Functions are "called" by entering the function's name followed by the
 _invocation operator_, `()`. "Invoke" or "execute" mean the same thing.
 Arguments that the function declaration expects should be passed inside of the
-invocation operator.  Functions can, but are not obligated to, return _return
+invocation operator. Functions can, but are not obligated to, return _return
 values_ at the end of their execution. Return values are often results of a
 process, grand totals, or success / failure data.
 
